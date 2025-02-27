@@ -1,0 +1,27 @@
+#!/bin/bash
+
+## Prompt for session name
+session=$(find ~ ~/Developer ~/Developer/OIA ~/Developer/OIA/cses ~/Developer/OIA/jurisdiccional/ ~/Developer/AI/ ~/dotfiles/ "/Users/simon/Library/Mobile Documents/iCloud~md~obsidian/Documents/thevault" -mindepth 1 -maxdepth 1 -type d | fzf)
+
+## Exit if no session is selected
+[ -z "$session" ] && echo "No session selected. Exiting." && exit 1
+
+session_name=$(basename "$session")
+
+## Start tmux if not running
+if ! pgrep -x "tmux" >/dev/null; then
+  tmux new-session -s "$session_name" -c "$session"
+  exit 0
+fi
+
+## Check if session exists, create if it doesn’t
+if ! tmux has-session -t "$session_name" 2>/dev/null; then
+  tmux new-session -s "$session_name" -c "$session" -d
+fi
+
+## Attach or switch session depending on whether already inside tmux
+if [ -z "$TMUX" ]; then
+  tmux attach-session -t "$session_name"
+else
+  tmux switch-client -t "$session_name"
+fi

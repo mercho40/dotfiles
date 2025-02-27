@@ -1,0 +1,22 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[ env ]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 4
+padding.y = 4
+startup_mode = "maximized"
+decorations = "Buttonless"
+
+[font]
+normal.family = "MesloLGS Nerd Font Mono"
+
+#regular
+size = 16
+
+[shell]
+program = "/bin/zsh" 
+args = ["--login", "-c", "/opt/homebrew/bin/tmux attach || //opt/homebrew/bin/tmux"]

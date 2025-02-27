@@ -1,0 +1,3 @@
+#! /bin/bash
+# fzf | fd . '/Users/simon/Library/Mobile Documents/iCloud~md~obsidian/Documents/thevault'
+fzf | fd . '/Users/simon/Library/Mobile Documents/iCloud~md~obsidian/Documents/thevault'

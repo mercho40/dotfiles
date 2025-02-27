@@ -1,0 +1,9 @@
+#!/bin/bash
+
+session=$(find ~/dotfiles 3 -type d | fzf)
+session_name=$(basename "$session")
+if ! tmux has-session -t "$session_name"; then
+  tmux new-session -s "$session_name" -c "$session" -d
+fi
+
+tmux switch-client -t "$session_name"

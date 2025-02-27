@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Check if any tmux session is running
+if /opt/homebrew/bin/tmux list-sessions &>/dev/null; then
+  # Attach to the first available session
+  /opt/homebrew/bin/tmux attach-session
+else
+  # Start a new session if none exists
+  SESSION_NAME="ghostty"
+  /opt/homebrew/bin/tmux new-session -s $SESSION_NAME -d
+  /opt/homebrew/bin/tmux attach-session -t $SESSION_NAME
+fi
+
+# Apply the Catppuccin theme
+/Users/simon/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
