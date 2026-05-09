@@ -2,6 +2,7 @@
 
 ## Prompt for session name
 session=$(find ~ ~/Developer ~/Developer/OIA ~/Developer/OIA/cses ~/Developer/OIA/jurisdiccional/ ~/Developer/AI/ ~/dotfiles/ "/Users/simon/Library/Mobile Documents/iCloud~md~obsidian/Documents/thevault" -mindepth 1 -maxdepth 1 -type d | fzf)
+# session=$(find ~/Downloads ~/OIA -mindepth 1 -maxdepth 1 -type d | fzf)
 
 ## Exit if no session is selected
 [ -z "$session" ] && echo "No session selected. Exiting." && exit 1

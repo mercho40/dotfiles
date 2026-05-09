@@ -1,0 +1,11 @@
+# Source this, don't execute — cd needs to affect the current shell.
+# Bound to ctrl+f via bindkey in .zshrc.
+
+session=$(find ~ ~/Developer ~/Developer/OIA ~/Developer/OIA/cses ~/Developer/OIA/jurisdiccional/ ~/dotfiles/ "/Users/simon/Library/Mobile Documents/iCloud~md~obsidian/Documents/thevault" "/Users/simon/Library/Mobile Documents/iCloud~md~obsidian/Documents/thevault/School/5to TIC/" -mindepth 1 -maxdepth 1 -type d | fzf)
+
+if [ -n "$session" ]; then
+  cd "$session"
+  printf '\033]2;%s\007' "$(basename "$session")"
+fi
+
+unset session
